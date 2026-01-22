@@ -18,8 +18,8 @@
     "@angular/animations": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0"
   },
   "devDependencies": {
-    "ng-packagr": "20.0.0",
-    "typescript": "5.2.0"
+    "ng-packagr": "^20.0.0",
+    "typescript": "^5.2.0"
   },
   "ngPackage": {
     "lib": {
