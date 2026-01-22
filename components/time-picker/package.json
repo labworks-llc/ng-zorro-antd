@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ng-zorro-antd-timepicker-lw",
-  "version": "11.4.3",
+  "version": "11.4.4",
   "scripts": {
     "build": "ng-packagr -p ng-package.json"
   },
