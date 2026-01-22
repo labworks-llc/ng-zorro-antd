@@ -24,6 +24,8 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isValid } from 'date-fns';
 import { slideMotion } from './animations';
+import { DecimalPipe, AsyncPipe, NgIf, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { BooleanInput, ValueChangeAction, ValueChangeInvoker } from './types';
 import { isNil } from './utils';
@@ -48,7 +50,8 @@ import { TimeHolder } from './time-holder';
   },
   animations: [slideMotion],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: NzTimePickerComponent, multi: true }],
-  styleUrls: ['./ng-zorro-antd.css']
+  styleUrls: ['./ng-zorro-antd.css'],
+  imports: [DecimalPipe, AsyncPipe, NgIf, NgFor, FormsModule],
 })
 export class NzTimePickerComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnChanges, OnDestroy {
   static ngAcceptInputType_nzUse12Hours: BooleanInput;
@@ -244,7 +247,7 @@ export class NzTimePickerComponent implements ControlValueAccessor, OnInit, Afte
     this.onFocus(false)
     this.ngBlur.emit()
   }
-  
+
   onFocus(value: boolean): void {
     this.focused = value;
     if (value && this.nzSelectTextOnFocus) {

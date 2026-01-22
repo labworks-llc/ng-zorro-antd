@@ -23,6 +23,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BooleanInput, ValueChangeAction, ValueChangeInvoker } from './types';
+import { DecimalPipe, AsyncPipe, NgIf, NgFor } from '@angular/common';
 
 import { isNotNil } from './utils';
 import { DateHelperByDatePipe } from './date-helper.service';
@@ -53,7 +54,8 @@ export type NzTimePickerUnit = 'hour' | 'minute' | 'second' | '12-hour';
     '[class.ant-picker-time-panel-placement-bottomLeft]': `!nzInDatePicker`,
     '(mousedown)': 'onMousedown($event)'
   },
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: NzTimePickerPanelComponent, multi: true }]
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: NzTimePickerPanelComponent, multi: true }],
+  imports: [DecimalPipe, AsyncPipe, NgIf, NgFor]
 })
 export class NzTimePickerPanelComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
   static ngAcceptInputType_nzUse12Hours: BooleanInput;
@@ -79,7 +81,7 @@ export class NzTimePickerPanelComponent implements ControlValueAccessor, OnInit,
   minuteRange!: ReadonlyArray<{ index: number; disabled: boolean }>;
   secondRange!: ReadonlyArray<{ index: number; disabled: boolean }>;
   use12HoursRange!: ReadonlyArray<{ index: number; value: string }>;
- 
+
   @ViewChild('hourListElement', { static: false })
   hourListElement?: DebugElement;
   @ViewChild('minuteListElement', { static: false }) minuteListElement?: DebugElement;
@@ -378,7 +380,7 @@ export class NzTimePickerPanelComponent implements ControlValueAccessor, OnInit,
         element.scrollTo({top: offsetTop + 1, behavior: 'smooth'})
         element.scrollTo({top: offsetTop, behavior: 'smooth'})
       }
-      if (Math.round(offsetTop) !== Math.round(element.scrollTop)) { 
+      if (Math.round(offsetTop) !== Math.round(element.scrollTop)) {
         element.scrollTo({top: offsetTop + 0.5, behavior: 'smooth'})
       }
     })
