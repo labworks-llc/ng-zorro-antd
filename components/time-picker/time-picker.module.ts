@@ -13,11 +13,12 @@ import { NzTimePickerPanelComponent } from './time-picker-panel.component';
 import { NzTimePickerComponent } from './time-picker.component';
 
 @NgModule({
-  declarations: [NzTimePickerComponent, NzTimePickerPanelComponent],
-  exports: [NzTimePickerPanelComponent, NzTimePickerComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FormsModule,
+    NzTimePickerComponent,
+    NzTimePickerPanelComponent
   ],
   providers: [DateHelperByDateFns, DateHelperByDatePipe]
 })
